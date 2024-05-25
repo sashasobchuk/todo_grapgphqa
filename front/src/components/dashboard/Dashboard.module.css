@@ -1,0 +1,38 @@
+
+*{
+    box-sizing: border-box;
+}
+.container{
+    box-shadow: 1px 1px 2px black  ;
+    padding: 10px;
+    position: relative;
+    /*height: 100%;*/
+}
+
+.header{
+    height: 10vh;
+}
+
+.createShape{
+    background-color: #61dafb50;
+    padding: 3px;
+    border-radius: 5px;
+    width: 100px;
+    border: #61dafb60 solid;
+}
+.createShape:hover{
+    background-color: #61dafb90;
+    cursor: pointer;
+}
+.shapesContainer {
+    position: relative;
+    background-color: #61dafb;
+    /*width: 1440px;*/
+    /*height: 600px;*/
+    /*bottom: 0;*/
+    /*border: 10px red solid;*/
+}
+.shape{
+    position: absolute;
+    border: black solid 1px;
+}
