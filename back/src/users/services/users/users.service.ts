@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import {InjectRepository} from "@nestjs/typeorm";
-import {UserEntity} from "../../../enteties/user.entity";
+import {UserEntity} from "../../../entities/user.entity";
 import {Repository} from "typeorm";
 import {CreateUserInput} from "../../inputs/create-user.input";
 import {UpdateUserInput} from "../../inputs/update-user.input";
@@ -29,7 +29,7 @@ export class UsersService {
         return id
     }
     async updateUser(updateUserInput:UpdateUserInput):Promise<UserEntity>{
-        await this.userRepository.update({id:updateUserInput.id},updateUserInput)
+          await this.userRepository.update({id:updateUserInput.id},updateUserInput)
         return this.getOneUser(updateUserInput.id)
     }
 

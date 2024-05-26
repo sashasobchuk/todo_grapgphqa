@@ -1,5 +1,14 @@
-import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    ManyToOne,
+    OneToMany,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn
+} from "typeorm";
 import {Field, ID, ObjectType} from "@nestjs/graphql";
+import {DashboardEntity} from "./dashboard.entity";
 
 
 @ObjectType()
@@ -24,4 +33,8 @@ export class UserEntity {
     @Field({nullable: true})
     @Column('varchar', {nullable: true})
     name: string
+
+    @Field(()=>DashboardEntity)
+    @OneToMany(()=>DashboardEntity, dashboard =>dashboard.user)
+    dashboards: DashboardEntity[]
 }

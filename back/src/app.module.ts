@@ -4,6 +4,10 @@ import {TypeOrmModule} from "@nestjs/typeorm";
 import { UsersModule } from './users/users.module';
 import {GraphQLModule} from "@nestjs/graphql";
 import {ApolloDriver} from "@nestjs/apollo";
+import { DashboardsModule } from './dashboards/dashboards.module';
+import { ShapesService } from './shapes/shapes.service';
+import { ShapesResolver } from './shapes/shapes.resolver';
+import { ShapesModule } from './shapes/shapes.module';
 
 @Module({
   imports: [
@@ -32,14 +36,16 @@ import {ApolloDriver} from "@nestjs/apollo";
                   logging: true,
                   synchronize: true,
                   autoLoadEntities: true,
+
                   entities: [__dirname, 'dist/**/*.entity{.ts,.js}']
               })
           }
       }),
       // UserModule,
-      UsersModule
+      UsersModule,
+      DashboardsModule,
+      ShapesModule
   ],
   controllers: [],
-  providers: [],
 })
 export class AppModule {}
