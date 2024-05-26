@@ -2,9 +2,35 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input CreateDashboardInput {
+  name: String
+  status: String
+  userId: ID
+}
+
+input CreateShapeInput {
+  height: Float!
+  type: String!
+  valueId: ID
+  width: Float!
+  x: Float!
+  y: Float!
+  z: Float!
+}
+
 input CreateUserInput {
   email: String!
   name: String
+}
+
+type DashboardEntity {
+  createdAt: DateTime!
+  id: ID!
+  name: String!
+  shapes: [ShapeEntity!]
+  status: String!
+  updatedAt: DateTime!
+  user: UserEntity!
 }
 
 """
@@ -12,15 +38,59 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+input GetDashboardInput {
+  id: ID
+  name: String
+  status: String
+  userId: ID
+}
+
 type Mutation {
+  createDashBoard(createDashboardInput: CreateDashboardInput!): DashboardEntity!
+  createShape(createShapeInput: CreateShapeInput!): ShapeEntity!
   createUser(createUser: CreateUserInput!): UserEntity!
   removeUser(id: Float!): Float!
+  updateDashBoard(updateDashboardInput: UpdateDashboardInput!): DashboardEntity!
   updateUser(updateUser: UpdateUserInput!): UserEntity!
 }
 
 type Query {
+  getAllDashBoards: [DashboardEntity!]!
   getAllUsers: [UserEntity!]!
+  getDashBoard(getDashBoardInput: GetDashboardInput!): DashboardEntity!
   getOneUser(id: Float!): UserEntity!
+  getShapes: [ShapeEntity!]!
+}
+
+type ShapeEntity {
+  createdAt: DateTime!
+  dashboard: DashboardEntity!
+  height: ID!
+  id: ID!
+  type: String!
+  updatedAt: DateTime!
+  value: ID!
+  width: ID!
+  x: Float!
+  y: ID!
+  z: Float!
+}
+
+input ShapeInput {
+  height: Float!
+  id: ID!
+  type: String!
+  valueId: ID
+  width: Float!
+  x: Float!
+  y: Float!
+  z: Float!
+}
+
+input UpdateDashboardInput {
+  id: ID!
+  shapes: [ShapeInput!]
+  status: String
 }
 
 input UpdateUserInput {
@@ -31,6 +101,7 @@ input UpdateUserInput {
 
 type UserEntity {
   createdAt: DateTime!
+  dashboards: DashboardEntity!
   email: String!
   id: ID!
   name: String

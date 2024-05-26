@@ -1,6 +1,7 @@
 import React, {useEffect, useState,useRef} from 'react';
 import classes from "../dashboard/Dashboard.module.css";
-import {Shape} from "../dashboard/Dashboard";
+import {Shape} from "../../canva";
+// import {Shape} from "../dashboard/Dashboard";
 
 
 type ShapeProps =  {
@@ -64,7 +65,7 @@ const ShapeComponent:React.FC<ShapeProps> = (props) => {
                 zIndex:shape.z,
                 width:shape.width,
                 height:shape.height,
-                backgroundColor:shape.backgroundColor
+                // backgroundColor:shape.backgroundColor
             }}
                 className={classes.shape}
                 key={shape.id}
